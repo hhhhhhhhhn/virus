@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./index.css">
+	<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/hhhhhhhhhn/peerroom/peerroom.js" defer></script>
+	<script src="./data.js"></script>
+	<script src="./host.js"></script>
+	<script src="./guest.js"></script>
+	<title>Juego</title>
+</head>
+<body>
+	<div id="host">No cierres esta pestaña!
+		<span>Únete <a id="url" target="_blank">aquí</a>
+			<button id="start">Empezar</button>
+		</span>
+	</div>
+
+	<div id="login">
+		<div id="login-centre">
+			<p>Nombre: <input type="text" id="username"></p>
+			<div id="join-container">
+				<button id="join-red">Equipo Rojo</button>
+				<button id="join-blue">Equipo Azul</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="scores">
+		<h2 id="message"></h2>
+		<h2 id="timer">Quedan 0s</h2>
+		<h2 id="painter">Dibujando: </h2>
+		<li id="red-score"></li>
+		<li id="blue-score"></li>
+	</div>
+
+	<div id="other-turn">
+		<h1>Turno del otro equipo.</h1>
+	</div>
+
+	<div id="draw">
+		<h1>Tu dibujas! tu palabra es:</h1>
+		<h2 id="word"></h2>
+		<h3 id="definition"></h3>
+	</div>
+
+	<div id="guess">
+		<h1>Adivina el dibujo!</h1>
+		<input type="text" id="guess-box">
+		<p id="autocomplete"></p>
+	</div>
+</body>
+</html>

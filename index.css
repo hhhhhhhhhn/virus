@@ -1,0 +1,27 @@
+body {
+	font-family: sans-serif;
+}
+
+#host {
+	display: none;
+}
+
+#login {
+	display: none;
+}
+
+#other-turn {
+	display: none;
+}
+
+#scores {
+	display: none;
+}
+
+#draw {
+	display: none;
+}
+
+#guess {
+	display: none;
+}
