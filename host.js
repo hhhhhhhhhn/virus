@@ -35,12 +35,8 @@ Room.host = (peer) => {
 
 	function newTurn(success) {
 		let timestamp = Date.now()
-
-		if(success)
-			message = `${guesser} acertó la palabra "${word}"`
-		else if(guesser)
-			message = `El equipo ${turn == "red" ? "Rojo" : "Azul"} no ` + 
-				`adivinó la palabra "${word}"`
+		let oldRedScore = redScore
+		let oldBlueScore = blueScore
 		
 		if(success) {
 			clearTimeout(timeout)
@@ -55,6 +51,22 @@ Room.host = (peer) => {
 				redScore = Math.floor(oppositeMultiplier * redScore)
 			}
 		}
+
+		let comparison = ""
+		for(let [amount, name] of comparisons) {
+			if(amount > (turn == "red" ? oldRedScore : oldBlueScore) &&
+			amount < (turn == "red" ? redScore : blueScore)) {
+				comparison = `La Enfermedad ${turn == "red" ? "Rojo" : "Azul"}`+
+					` tiene más infectados que la población de ${name}!`
+				break
+			}
+		}
+
+		if(success)
+			message = `${guesser} acertó la palabra "${word}". ${comparison}`
+		else if(guesser)
+			message = `El Equipo ${turn == "red" ? "Rojo" : "Azul"} no ` + 
+				`adivinó la palabra "${word}"`
 
 		if(turn == "red") {
 			turn = "blue"

@@ -62,3 +62,16 @@ shuffle(words)
 function normalize(word) {
 	return word.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 }
+
+
+let comparisons = [
+	[825, "la ciudad del Vaticano"],
+	[39000, "Monaco"],
+	[110000, "Tonga"],
+	[600000, "Luxemburgo"],
+	[3500000, "Uruguay"],
+	[18900000, "Chile"],
+	[127000000, "Japón"],
+	[1427647786, "China"],
+	[4600000000, "todo Asia"]
+].reverse()
