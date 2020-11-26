@@ -188,6 +188,7 @@ a, a:visited, a:focus, a:active{
 	width: 30vh;
 	perspective: 600px;
 	margin:	auto;
+	margin-bottom: 2vh;
 }
 
 #card {
@@ -238,17 +239,21 @@ a, a:visited, a:focus, a:active{
 	transform: rotateY(360deg) !important;
 }
 
-#card-back h2 {
+#draw h2 {
 	margin: 2vh;
 	margin-top: 4vh;
 	font-size: 3vh;
 }
 
-#card-back h3 {
+#draw h3 {
 	color: dimgray;
 	margin: 2vh;
 	margin-top: 4vh;
 	font-weight: lighter;
+}
+
+#draw a {
+	padding-top: 2vh;
 }
 
 #rl {

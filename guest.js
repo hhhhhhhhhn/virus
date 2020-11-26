@@ -13,10 +13,13 @@ Room.guest = async (conn) => {
 	let usernameEl= document.getElementById("username")
 	let timerEl = document.getElementById("timer")
 	let wordEl = document.getElementById("word")
+	let wordAccEl = document.getElementById("word-acc")
 	let definitionEl = document.getElementById("definition")
+	let definitionAccEl = document.getElementById("definition-acc")
 	let redBarEl = document.getElementById("red-bar")
 	let cardFrontEl = document.getElementById("card-front")
 	let cardBackEl = document.getElementById("card-back")
+	let accessibilityEl = document.getElementById("accessibility")
 
 	let scoresInterval	
 	let currentWord
@@ -95,6 +98,13 @@ Room.guest = async (conn) => {
 		}
 	})
 
+	accessibilityEl.addEventListener("click", () => {
+		drawEl.removeChild(document.getElementById("card-container"))
+		accessibilityEl.parentNode.removeChild(accessibilityEl)
+		wordAccEl.style.display = "initial"
+		definitionAccEl.style.display = "initial"
+	})
+
 	conn.on("data", (data) => {
 		if(data.blueScore > 8000000000) document.body.innerHTML = 
 			`<div id="bl"><h1 id="win">La Enfermedad Azul Dominó al Mundo!</h1>`
@@ -118,8 +128,8 @@ Room.guest = async (conn) => {
 			drawEl.style.display = "initial"
 			guessEl.style.display = "none"
 			otherTurnEl.style.display = "none"
-			wordEl.innerHTML = data.word
-			definitionEl.innerHTML = data.definition
+			wordEl.innerHTML = wordAccEl.innerHTML = data.word
+			definitionEl.innerHTML = definitionAccEl.innerHTML = data.definition
 			setTimeout(() => {
 				cardBackEl.className = "card-back-flipped"
 				cardFrontEl.className = "card-front-flipped"
