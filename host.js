@@ -6,8 +6,7 @@ Room.init = (url,) => {
 }
 
 Room.host = (peer) => {
-	
-	let turn = "red"
+	let turn = Math.random() < 0.5 ? "red" : "blue"
 	let painter = ""
 	let redScore = 100
 	let blueScore = 100
@@ -56,7 +55,7 @@ Room.host = (peer) => {
 		for(let [amount, name] of comparisons) {
 			if(amount > (turn == "red" ? oldRedScore : oldBlueScore) &&
 			amount < (turn == "red" ? redScore : blueScore)) {
-				comparison = `La Enfermedad ${turn == "red" ? "Rojo" : "Azul"}`+
+				comparison = `La Enfermedad ${turn == "red" ? "Roja" : "Azul"}`+
 					` tiene más infectados que la población de ${name}!`
 				break
 			}

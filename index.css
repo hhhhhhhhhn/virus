@@ -1,9 +1,65 @@
 body {
 	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 2vh;
+	background-color: white;
+	color: black;
+	text-align: center;
+	margin: 0;
 }
 
 #host {
 	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	font-size: 6vh;
+	font-weight: bold;
+	transform: translate(-50%, -50%);
+}
+
+#login {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	font-size: 3vh;
+	font-weight: bold;
+	transform: translate(-50%, -50%);
+}
+
+#join-red {
+	background-color: darkred;
+	color: white;
+}
+
+#join-blue {
+	background-color: darkblue;
+	color: white;
+}
+
+input {
+	font-size: 3vh;
+	background-color: white;
+	border: 0.2vh solid black;
+	border-radius: 1vh;
+}
+
+button {
+	background-color: white;
+	border: 0.2vh solid black;
+	border-radius: 1vh;
+	padding: 1vh;
+	font-size: 2vh;
+}
+
+a, a:visited, a:focus, a:active{
+	color: dimgray;
+}
+
+#start { 
+	font-size: 4vh !important;
+	margin-top: 5vh;
 }
 
 #login {
@@ -24,4 +80,187 @@ body {
 
 #guess {
 	display: none;
+}
+
+#blue-bar {
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 5%;
+	background-color: darkblue;
+	border-bottom: 0.2vh solid black;
+}
+
+#red-bar {
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 50%;
+	height: 5%;
+	background-color: darkred;
+	transition: width 1s;
+	border-right: 0.2vh solid black;
+}
+
+#red-score {
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	color: white;
+	list-style: none;
+	font-size: 3vh;
+	transform: translate(1vh, 1vh);
+}
+
+#blue-score {
+	position: fixed;
+	top: 0%;
+	left: 100%;
+	color: white;
+	list-style: none;
+	font-size: 3vh;
+	width: 70vw;
+	text-align: end;
+	transform: translate(Calc(-1vh - 100%), 1vh);
+}
+
+#timer {
+	position: fixed;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, -250%);
+}
+
+#message {
+	margin-top: 11vh;
+	color: gray;
+	font-weight: lighter;
+	padding-left: 10vw;
+	padding-right: 10vw;
+}
+
+#win {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	font-size: 8vh;
+	color: white;
+}
+
+#other-turn {
+	font-size: 5vh;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#draw {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#guess {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#guess h1 {
+	font-size: 4vh;
+}
+
+#autocomplete {
+	font-size: 3vh;
+}
+
+#draw h1 {
+	font-size: 4vh;
+}
+
+#card-container {
+	height: 40vh;
+	width: 30vh;
+	perspective: 600px;
+	margin:	auto;
+}
+
+#card {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	transition: transform 5s;
+	transform-style: preserve-3d;
+	transform: rotateY(0deg);
+}
+
+.card-face {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+#card-back {
+	position: absolute;
+	transform: rotateY(180deg);
+	border: 0.2vh solid black;
+	border-radius: 1vh;
+	background-color: white;
+	height: 100%;
+	width: 100%;
+	backface-visibility: visible;
+	transition: transform 1s;
+}
+
+#card-front {
+	position: absolute;
+	border: 00.2vh solid black;
+	transform: rotateY(0deg);
+	border-radius: 1vh;
+	background-color: white;
+	height: 100%;
+	width: 100%;
+	transition: transform 1s;
+}
+
+.card-front-flipped {
+	transform: rotateY(180deg) !important;
+}
+
+.card-back-flipped {
+	transform: rotateY(360deg) !important;
+}
+
+#card-back h2 {
+	margin: 2vh;
+	margin-top: 4vh;
+	font-size: 3vh;
+}
+
+#card-back h3 {
+	color: dimgray;
+	margin: 2vh;
+	margin-top: 4vh;
+	font-weight: lighter;
+}
+
+#rl {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color: darkred;
+}
+
+#bl {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color: darkblue;
 }

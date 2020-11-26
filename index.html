@@ -9,12 +9,12 @@
 	<script src="./data.js"></script>
 	<script src="./host.js"></script>
 	<script src="./guest.js"></script>
-	<title>Juego</title>
+	<title>Pandemiary</title>
 </head>
 <body>
 	<div id="host">No cierres esta pestaña!
-		<span>Únete <a id="url" target="_blank">aquí</a>
-			<button id="start">Empezar</button>
+		<span>Únete <a id="url" target="_blank">aquí</a> <br>
+			<button id="start">Empezar Partida</button>
 		</span>
 	</div>
 
@@ -29,9 +29,11 @@
 	</div>
 
 	<div id="scores">
+		<div id="blue-bar"></div>
+		<div id="red-bar"></div>
 		<h2 id="message"></h2>
 		<h2 id="timer">Quedan 0s</h2>
-		<h2 id="painter">Dibujando: </h2>
+		<h2 id="painter">Esperando que empieze la partida...</h2>
 		<li id="red-score">Rojo: 100 Infectados</li>
 		<li id="blue-score">Azul: 100 Infectados</li>
 	</div>
@@ -41,15 +43,22 @@
 	</div>
 
 	<div id="draw">
-		<h1>Tu dibujas! tu palabra es:</h1>
-		<h2 id="word"></h2>
-		<h3 id="definition"></h3>
+		<h1>Tu dibujas! La palabra es:</h1>
+		<div id="card-container">
+			<div id="card">
+				<div id="card-front"></div>
+				<div id="card-back">
+					<h2 id="word"></h2>
+					<h3 id="definition"></h3>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div id="guess">
 		<h1>Adivina el dibujo!</h1>
+		<p id="autocomplete">Máscara quirúrgica<br>Viruela<br>Antibiótico</p>
 		<input type="text" id="guess-box">
-		<p id="autocomplete"></p>
 	</div>
 </body>
 </html>

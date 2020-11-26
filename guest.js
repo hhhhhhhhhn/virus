@@ -14,6 +14,9 @@ Room.guest = async (conn) => {
 	let timerEl = document.getElementById("timer")
 	let wordEl = document.getElementById("word")
 	let definitionEl = document.getElementById("definition")
+	let redBarEl = document.getElementById("red-bar")
+	let cardFrontEl = document.getElementById("card-front")
+	let cardBackEl = document.getElementById("card-back")
 
 	let scoresInterval	
 	let currentWord
@@ -47,11 +50,12 @@ Room.guest = async (conn) => {
 	}
 
 	function setScore(redScore, blueScore) {
+		redBarEl.style.width = ` ${100 * redScore / (redScore + blueScore)}%`
+
 		let currentRedScore = Number(redScoreEl.innerHTML.split(" ")[1])
 		let redInterval = Math.floor((redScore - currentRedScore) / 20) + 1
 		let currentBlueScore = Number(blueScoreEl.innerHTML.split(" ")[1])
 		let blueInterval = Math.floor((blueScore - currentBlueScore) / 20) + 1
-		console.log(currentRedScore, currentBlueScore, redInterval, blueInterval)
 
 		clearInterval(scoresInterval)
 
@@ -77,8 +81,8 @@ Room.guest = async (conn) => {
 			if(normalize(word).includes(text)) matches.push(word)
 			if(matches.length == 3) break
 		}
-		while(matches.length != 3) matches.push("")
-		autocompleteEl.innerHTML = matches.join("<br>")
+		while(matches.length != 3) matches.push(".")
+		autocompleteEl.innerHTML = matches.reverse().join("<br>")
 	}
 
 	guessBoxEl.addEventListener("keydown", (e) => {
@@ -93,9 +97,9 @@ Room.guest = async (conn) => {
 
 	conn.on("data", (data) => {
 		if(data.blueScore > 8000000000) document.body.innerHTML = 
-			`<h1>La Enfermedad Azul Dominó al Mundo!</h1>`
+			`<div id="bl"><h1 id="win">La Enfermedad Azul Dominó al Mundo!</h1>`
 		else if(data.redScore > 8000000000) document.body.innerHTML = 
-			`<h1>La Enfermedad Roja Dominó al Mundo!</h1>`
+			`<div id="rl"><h1 id="win">La Enfermedad Roja Dominó al Mundo!</h1>`
 
 		currentWord = data.word
 		setScore(data.redScore, data.blueScore)
@@ -104,6 +108,8 @@ Room.guest = async (conn) => {
 		setTimer(data.due)
 
 		if(data.turn != team) {
+			cardBackEl.className = ""
+			cardFrontEl.className = ""
 			drawEl.style.display = "none"
 			guessEl.style.display = "none"
 			otherTurnEl.style.display = "initial"
@@ -114,13 +120,17 @@ Room.guest = async (conn) => {
 			otherTurnEl.style.display = "none"
 			wordEl.innerHTML = data.word
 			definitionEl.innerHTML = data.definition
+			setTimeout(() => {
+				cardBackEl.className = "card-back-flipped"
+				cardFrontEl.className = "card-front-flipped"
+			}, 1000)
 		}
 		else {
 			drawEl.style.display = "none"
 			guessEl.style.display = "initial"
 			otherTurnEl.style.display = "none"
-			autocompleteEl.innerHTML = ""
 			guessBoxEl.value = ""
+			autocomplete()
 		}
 	})
 }
